@@ -1,4 +1,10 @@
 CodigoSecreto::Application.routes.draw do
+  get "game/new"
+
+  get "game/playing"
+
+  get "game/over"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

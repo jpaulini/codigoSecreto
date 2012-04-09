@@ -17,4 +17,7 @@ Then /^I should see the guesses table$/ do
 end
 
 
+When /^the secret code is "([^"]*)"$/ do |code|
+  pending # express the regexp above with the code you wish you had
+end
 

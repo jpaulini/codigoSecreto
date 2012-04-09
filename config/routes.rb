@@ -1,7 +1,7 @@
 CodigoSecreto::Application.routes.draw do
   get "game/new"
 
-  get "game/playing"
+  post "game/playing"
 
   get "game/over"
 

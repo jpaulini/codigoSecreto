@@ -9,13 +9,6 @@ describe GameController do
     end
   end
 
-  describe "POST 'playing'" do
-    it "returns http success" do
-      post 'playing'
-      response.should be_success
-    end
-  end
-
   describe "GET 'over'" do
     it "returns http success" do
       get 'over'
@@ -24,13 +17,25 @@ describe GameController do
   end
 
 	describe "Checking guesses against secret code" do
-	before :each do
-		@fake_game=mock('game',:secret_code => "ABCD")
-	end
-		it "should return true if the guess == secret code" do
-			Game.stub(:check_code).and_return("4")
-			response.should render_template('game_over')
+      before :each do
+        @game = mock('Game')
+        @game.stub(:id).and_return("1")     
+        Game.stub(:find).with("1").and_return(@game)
+      end
+
+		it "should return true if the guess == secret code" do  
+        @game.stub(:check_code).and_return("4")
+
+        post :playing, {:id => "1"}
+  		  response.should redirect_to(:controller => 'game' , :action => 'over' ,:id => '1')
 		end
+		
+		it "should keep the playing page if failure" do
+        @game.stub(:check_code).and_return("2")
+
+        post :playing, {:id => "1"}
+  		  response.should render_template('playing')
+    end
 
 	end
 

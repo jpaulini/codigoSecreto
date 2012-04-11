@@ -3,16 +3,14 @@ class GameController < ApplicationController
   end
 
   def playing
-	@round="XXXX"
-	if not params.nil?
-	  @round=params[:firstCell] + params[:secondCell]+params[:thirdCell]+params[:fourthCell]
-	end
-	@result=Game.check_code(@round)
-	if  @result == "4" 
-		redirect_to game_over_path :result => "success"
-	end
+    @game = Game.find params[:id]
+ 
+#    flash[:notice] = "#{@game.title} was successfully updated."
+    if @game.check_code(params[:guessed_code]) == "4"
+      redirect_to game_over_path(:id => @game.id)
+    end
   end
-
+      
   def over
   end
 

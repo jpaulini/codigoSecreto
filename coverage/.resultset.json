@@ -1,32 +1,30 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/dearuser/Projects/codigoSecreto/app/controllers/application_controller.rb": [
+      "/home/saasbook/Documents/codigoSecreto/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/home/dearuser/Projects/codigoSecreto/app/helpers/application_helper.rb": [
+      "/home/saasbook/Documents/codigoSecreto/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/dearuser/Projects/codigoSecreto/app/helpers/game_helper.rb": [
+      "/home/saasbook/Documents/codigoSecreto/app/helpers/game_helper.rb": [
         1,
         null
       ],
-      "/home/dearuser/Projects/codigoSecreto/app/controllers/game_controller.rb": [
+      "/home/saasbook/Documents/codigoSecreto/app/controllers/game_controller.rb": [
         1,
         1,
         null,
         null,
         1,
-        1,
-        1,
-        1,
+        2,
         null,
-        0,
-        0,
-        0,
+        null,
+        2,
+        1,
         null,
         null,
         null,
@@ -35,11 +33,46 @@
         null,
         null
       ],
-      "/home/dearuser/Projects/codigoSecreto/app/models/game.rb": [
+      "/home/saasbook/Documents/codigoSecreto/app/models/game.rb": [
         1,
         null
       ]
     },
-    "timestamp": 1334002248
+    "timestamp": 1334166964
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/home/saasbook/Documents/codigoSecreto/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/codigoSecreto/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/codigoSecreto/app/helpers/game_helper.rb": [
+        1,
+        null
+      ],
+      "/home/saasbook/Documents/codigoSecreto/app/controllers/game_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/saasbook/Documents/codigoSecreto/app/models/game.rb": [
+        1,
+        null
+      ]
+    },
+    "timestamp": 1334150331
   }
 }

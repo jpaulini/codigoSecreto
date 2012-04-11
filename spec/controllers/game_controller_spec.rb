@@ -2,19 +2,23 @@ require 'spec_helper'
 
 describe GameController do
 
-  describe "GET 'new'" do
-    it "returns http success" do
-      get 'new'
-      response.should be_success
-    end
-  end
-
   describe "GET 'over'" do
     it "returns http success" do
       get 'over'
       response.should be_success
     end
   end
+
+  describe 'starting a new game'
+    it 'should create a new record when I start a new game' do
+      @game = mock('Game')
+      @game.stub(:id).and_return("200")
+      Game.stub(:create!).and_return(@game)
+      
+      get :new
+ 		  response.should redirect_to(:controller => 'game' , :action => 'playing' ,:id => '200')
+    end
+
 
 	describe "Checking guesses against secret code" do
       before :each do

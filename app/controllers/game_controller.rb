@@ -1,5 +1,7 @@
 class GameController < ApplicationController
   def new
+    @game=Game.create!
+    redirect_to game_playing_path(:id=> @game.id)
   end
 
   def playing

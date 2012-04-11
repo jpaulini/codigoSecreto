@@ -17,6 +17,8 @@
       "/home/saasbook/Documents/codigoSecreto/app/controllers/game_controller.rb": [
         1,
         1,
+        1,
+        1,
         null,
         null,
         1,
@@ -35,10 +37,15 @@
       ],
       "/home/saasbook/Documents/codigoSecreto/app/models/game.rb": [
         1,
+        1,
+        6,
+        6,
+        null,
+        null,
         null
       ]
     },
-    "timestamp": 1334166964
+    "timestamp": 1334176191
   },
   "Cucumber Features": {
     "coverage": {
@@ -61,6 +68,12 @@
         null,
         null,
         1,
+        1,
+        null,
+        null,
+        0,
+        0,
+        null,
         null,
         null,
         1,
@@ -73,6 +86,6 @@
         null
       ]
     },
-    "timestamp": 1334150331
+    "timestamp": 1334168740
   }
 }

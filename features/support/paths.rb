@@ -22,10 +22,13 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
     when /^the new Game page$/i
-	'/game/new'
+  	'/game/new'
 	
   	when /^the Start Game page$/i
-	'/game/start'
+  	'/game/start'
+
+    when /^playing page$/i
+    '/game/playing'
 
     else
       begin

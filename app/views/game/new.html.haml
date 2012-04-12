@@ -1,13 +1,3 @@
 -# Find me in app/views/game/new.html.haml
 %h1 Game#new
 
-%table#code-table
-
-%table#guesses-table
-
-=form_tag game_playing_path :method => :post do
-	= text_field_tag "firstCell"
-	= text_field_tag "secondCell"
-	= text_field_tag "thirdCell"
-	= text_field_tag "fourthCell"
-	= submit_tag 'Guess!', :id => 'guess_submit'

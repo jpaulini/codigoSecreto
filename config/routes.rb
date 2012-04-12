@@ -1,4 +1,6 @@
 CodigoSecreto::Application.routes.draw do
+  get "game/start"
+
   get "game/new"
 
   post "game/playing"

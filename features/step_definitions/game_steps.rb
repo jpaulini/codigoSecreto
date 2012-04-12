@@ -16,8 +16,8 @@ Then /^I should see the guesses table$/ do
 
 end
 
-
-When /^the secret code is "([^"]*)"$/ do |code|
-  pending # express the regexp above with the code you wish you had
+Given /^I started a new game$/ do
+    step "I go to the home page"
+    step 'I follow "Start a new game"'
 end
 

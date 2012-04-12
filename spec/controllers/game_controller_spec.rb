@@ -16,7 +16,7 @@ describe GameController do
       Game.stub(:create!).and_return(@game)
       
       get :new
- 		  response.should redirect_to(:controller => 'game' , :action => 'playing' ,:id => '200')
+ 		  response.should redirect_to(:controller => 'game' , :action => 'start' ,:game_id => '200')
     end
 
 
@@ -30,14 +30,14 @@ describe GameController do
 		it "should return true if the guess == secret code" do  
         @game.stub(:check_code).and_return("4")
 
-        post :playing, {:id => "1"}
-  		  response.should redirect_to(:controller => 'game' , :action => 'over' ,:id => '1')
+        post :playing, {:game_id => "1"}
+  		  response.should redirect_to(:controller => 'game' , :action => 'over' ,:game_id => '1')
 		end
 		
 		it "should keep the playing page if failure" do
         @game.stub(:check_code).and_return("2")
 
-        post :playing, {:id => "1"}
+        post :playing, {:game_id => "1"}
   		  response.should render_template('playing')
     end
 

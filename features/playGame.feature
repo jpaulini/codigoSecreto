@@ -1,16 +1,18 @@
 Feature: User can play game
 
+Background:
+  Given I started a new game
+
 Scenario: Trying a first guess and winning
 
-Given I am on the new Game page
+Given I should be on the Start Game page
 When I fill in the following:
      | firstCell      | 'A' |
      | secondCell     | 'B' |
      | thirdCell      | 'C' |
      | fourthCell     | 'D' |
 And I press "Guess!"
-And the secret code is "ABCD"
-Then I should be on the game over page
-And I should see "Congratulations!"
+Then I should be on playing page
+And I should see /A.*B.*C.*D.*[0-3]/
 
 

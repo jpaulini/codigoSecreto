@@ -23,6 +23,9 @@ module NavigationHelpers
     #     user_profile_path(User.find_by_login($1))
     when /^the new Game page$/i
 	'/game/new'
+	
+  	when /^the Start Game page$/i
+	'/game/start'
 
     else
       begin

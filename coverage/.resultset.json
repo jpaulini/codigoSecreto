@@ -26,10 +26,11 @@
         null,
         null,
         1,
-        2,
+        5,
+        5,
+        5,
         null,
-        null,
-        2,
+        5,
         1,
         null,
         null,
@@ -58,9 +59,14 @@
         null,
         null,
         null
+      ],
+      "/home/saasbook/Documents/codigoSecreto/app/models/game_guess.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1334261011
+    "timestamp": 1334689053
   },
   "Cucumber Features": {
     "coverage": {
@@ -90,7 +96,8 @@
         null,
         1,
         1,
-        null,
+        1,
+        1,
         null,
         1,
         0,
@@ -121,8 +128,13 @@
         null,
         null,
         null
+      ],
+      "/home/saasbook/Documents/codigoSecreto/app/models/game_guess.rb": [
+        1,
+        1,
+        null
       ]
     },
-    "timestamp": 1334270067
+    "timestamp": 1334689020
   }
 }

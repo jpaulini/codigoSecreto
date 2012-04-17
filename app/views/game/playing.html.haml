@@ -1,2 +1,11 @@
 %h1 Game#playing
 %p Find me in app/views/game/playing.html.haml
+%table#code-table
+
+%table#guesses-table
+  - if not @game_guesses.nil?
+    - @game_guesses.each do |guess|
+      %tr
+      - guess.code.each_char do |c|
+        %td= c.to_s
+

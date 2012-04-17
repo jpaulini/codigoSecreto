@@ -13,6 +13,8 @@ When I fill in the following:
      | fourthCell     | 'D' |
 And I press "Guess!"
 Then I should be on playing page
-And I should see /A.*B.*C.*D.*[0-3]/
+And I should see the code table
+And I should see the guesses table with "A B C D"
+
 
 

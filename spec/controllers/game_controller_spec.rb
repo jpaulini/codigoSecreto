@@ -42,6 +42,27 @@ describe GameController do
     end
 
 	end
+  
+  describe 'Should keep all de guesses' do
+    it 'should save all the guesses' do
+      @game = mock('Game', :check_code =>"0")
+      @game.stub(:id).and_return("10")
+      Game.stub(:find).and_return(@game)
 
+      post :playing, {:game_id => "10", :guessed_code => "ABCD" }
+      post :playing, {:game_id => "10", :guessed_code => "BCDA" }
+      GameGuess.find_all_by_game_id(@game.id).length.should be == 2
+    end
 
+    it 'should retrieve guesses given a game_id' do
+      @game = mock('Game', :check_code =>"0")
+      @fake_guesses = [ mock('GameGuess'), mock('GameGuess')]
+      @game.stub(:id).and_return("10")
+      Game.stub(:find).and_return(@game)
+      GameGuess.stub(:find_all_by_game_id).with("10").and_return(@fake_guesses)
+      
+      post :playing, {:game_id => "10"}
+      assigns(:game_guesses).should == @fake_guesses
+    end
+  end
 end

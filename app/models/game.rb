@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
   after_create {
-    self.secret_code = 'ABCD'
+    self.secret_code = '????'
     self.save!
   }
   

@@ -3,12 +3,18 @@
 %table#code-table
 
 %table#guesses-table
+%table#guesses-table
+  - if not @game_guesses.nil?
+    - @game_guesses.each do |guess|
+      %tr
+      - guess.code.each_char do |c|
+        %td= c.to_s
 
 =form_tag game_playing_path :method => :post  do
-    = hidden_field_tag "game_id" , @game.id if @game
-    = text_field_tag "firstCell"
-    = text_field_tag "secondCell"
-    = text_field_tag "thirdCell"
-    = text_field_tag "fourthCell"
-    = hidden_field_tag "guessed_code", "ABCD"
-    = submit_tag 'Guess!', :id => 'guess_submit'
+  = hidden_field_tag "game_id" , @game.id if @game
+  = text_field_tag "firstCell", ' ' 
+  = text_field_tag "secondCell", ' ', :onChange => 'calculate();'
+  = text_field_tag "thirdCell", ' ' , :onChange => 'calculate();'
+  = text_field_tag "fourthCell", ' ' , :onChange => 'calculate();'
+  = hidden_field_tag "guessed_code", "ABCD"
+  = submit_tag 'Guess!', :id => 'guess_submit'

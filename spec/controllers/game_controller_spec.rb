@@ -23,7 +23,9 @@ describe GameController do
 	describe "Checking guesses against secret code" do
       before :each do
         @game = mock('Game')
+        @game_guesses = mock('GameGuess',:build =>"")
         @game.stub(:id).and_return("1")     
+        @game.stub(:game_guesses).and_return(@game_guesses)
         Game.stub(:find).with("1").and_return(@game)
       end
 
@@ -43,26 +45,18 @@ describe GameController do
 
 	end
   
-  describe 'Should keep all de guesses' do
+  describe 'Keeping all de guesses' do
+  
+  before :each do
+        @game = FactoryGirl.build(:game)
+        Game.stub(:find).and_return(@game)
+  end
+  
     it 'should save all the guesses' do
-      @game = mock('Game', :check_code =>"0")
-      @game.stub(:id).and_return("10")
-      Game.stub(:find).and_return(@game)
-
       post :playing, {:game_id => "10", :guessed_code => "ABCD" }
       post :playing, {:game_id => "10", :guessed_code => "BCDA" }
-      GameGuess.find_all_by_game_id(@game.id).length.should be == 2
-    end
 
-    it 'should retrieve guesses given a game_id' do
-      @game = mock('Game', :check_code =>"0")
-      @fake_guesses = [ mock('GameGuess'), mock('GameGuess')]
-      @game.stub(:id).and_return("10")
-      Game.stub(:find).and_return(@game)
-      GameGuess.stub(:find_all_by_game_id).with("10").and_return(@fake_guesses)
-      
-      post :playing, {:game_id => "10"}
-      assigns(:game_guesses).should == @fake_guesses
+      @game.game_guesses.length.should be == 2
     end
   end
 end

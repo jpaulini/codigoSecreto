@@ -26,11 +26,11 @@
         null,
         null,
         1,
-        5,
-        5,
-        5,
+        4,
+        4,
         null,
-        5,
+        null,
+        4,
         1,
         null,
         null,
@@ -43,19 +43,26 @@
       "/home/saasbook/Documents/codigoSecreto/app/models/game.rb": [
         1,
         1,
-        11,
-        11,
+        null,
+        1,
+        null,
+        1,
+        7,
+        7,
+        7,
+        7,
+        28,
+        28,
+        null,
+        7,
         null,
         null,
         1,
-        5,
-        5,
-        5,
-        5,
-        20,
-        20,
         null,
-        5,
+        1,
+        10,
+        10,
+        null,
         null,
         null,
         null
@@ -66,7 +73,7 @@
         null
       ]
     },
-    "timestamp": 1334689053
+    "timestamp": 1334862047
   },
   "Cucumber Features": {
     "coverage": {
@@ -97,7 +104,7 @@
         1,
         1,
         1,
-        1,
+        null,
         null,
         1,
         0,
@@ -112,9 +119,8 @@
       "/home/saasbook/Documents/codigoSecreto/app/models/game.rb": [
         1,
         1,
-        2,
-        2,
         null,
+        1,
         null,
         1,
         1,
@@ -125,6 +131,14 @@
         4,
         null,
         1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        2,
+        2,
+        null,
         null,
         null,
         null
@@ -135,6 +149,6 @@
         null
       ]
     },
-    "timestamp": 1334689020
+    "timestamp": 1334862109
   }
 }

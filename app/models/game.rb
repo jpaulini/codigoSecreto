@@ -1,9 +1,8 @@
 class Game < ActiveRecord::Base
-  after_create {
-    self.secret_code = '????'
-    self.save!
-  }
+  has_many :game_guesses,  dependent: :destroy
   
+  after_create :save_secret_code
+
   def check_code(text)
     text = "XXXX" if text.nil?
     @result=0
@@ -14,5 +13,13 @@ class Game < ActiveRecord::Base
     end
     return @result.to_s
   end
+  
+  private
+  
+  def save_secret_code
+    self.secret_code = '????'
+    self.save!
+  end
+  
   
 end

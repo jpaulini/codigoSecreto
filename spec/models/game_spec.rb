@@ -11,10 +11,9 @@ describe Game do
   
   describe 'finding games' do
     it 'should retrieve an existing game by id' do
-      a=Game.create!(:id => '1')
-      b=Game.create!(:id => '2')
-      
-      result=Game.find_by_id('1')
+      a=Game.create!
+            
+      result=Game.find_by_id(a.id)
       result.should_not be_nil
     end
     

@@ -23,7 +23,7 @@
       <img src="./assets/0.5.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2012-04-17T11:57:33-07:00">2012-04-17T11:57:33-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2012-04-19T12:01:49-07:00">2012-04-19T12:01:49-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -34,15 +34,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         3.42
+         3.35
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>6</b> files in total.
-    <b>31</b> relevant lines. 
-    <span class="green"><b>31</b> lines covered</span> and
+    <b>33</b> relevant lines. 
+    <span class="green"><b>33</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -73,10 +73,10 @@
         <td class="strong"><a href="#6fb174d90bb1c8a5b56c2fb7eefb4835aa35443e" class="src_link" title="app/controllers/game_controller.rb">app/controllers/game_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>24</td>
-        <td>13</td>
-        <td>13</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>3.3</td>
+        <td>2.8</td>
       </tr>
       
       <tr>
@@ -102,11 +102,11 @@
       <tr>
         <td class="strong"><a href="#b3c15b1252491cc78619d075b78fe968ec2d3c44" class="src_link" title="app/models/game.rb">app/models/game.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>18</td>
-        <td>12</td>
-        <td>12</td>
+        <td>25</td>
+        <td>15</td>
+        <td>15</td>
         <td>0</td>
-        <td>9.2</td>
+        <td>9.3</td>
       </tr>
       
       <tr>
@@ -132,15 +132,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.65
+         2.4
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
     <b>2</b> files in total.
-    <b>15</b> relevant lines. 
-    <span class="green"><b>15</b> lines covered</span> and
+    <b>14</b> relevant lines. 
+    <span class="green"><b>14</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -171,10 +171,10 @@
         <td class="strong"><a href="#6fb174d90bb1c8a5b56c2fb7eefb4835aa35443e" class="src_link" title="app/controllers/game_controller.rb">app/controllers/game_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
         <td>24</td>
-        <td>13</td>
-        <td>13</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>3.3</td>
+        <td>2.8</td>
       </tr>
       
     </tbody>
@@ -189,15 +189,15 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         5.6
+         5.65
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>2</b> files in total.
-    <b>14</b> relevant lines. 
-    <span class="green"><b>14</b> lines covered</span> and
+    <b>17</b> relevant lines. 
+    <span class="green"><b>17</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -217,11 +217,11 @@
       <tr>
         <td class="strong"><a href="#b3c15b1252491cc78619d075b78fe968ec2d3c44" class="src_link" title="app/models/game.rb">app/models/game.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>18</td>
-        <td>12</td>
-        <td>12</td>
+        <td>25</td>
+        <td>15</td>
+        <td>15</td>
         <td>0</td>
-        <td>9.2</td>
+        <td>9.3</td>
       </tr>
       
       <tr>
@@ -458,8 +458,8 @@
     <h3>app/controllers/game_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>13</b> lines covered</span> and
+      <b>12</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -533,22 +533,22 @@
           <code class="ruby">  def playing</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="12">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="12">
+          <span class="hits">5</span>
           
           <code class="ruby">    @game = Game.find params[:game_id]</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="13">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="13">
+          <span class="hits">5</span>
           
-          <code class="ruby">    GameGuess.create!(:game_id =&gt; @game.id, :code =&gt; params[:guessed_code])</code>
+          <code class="ruby">    @game.game_guesses.build(:code =&gt; params[:guessed_code])</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="14">
-          <span class="hits">6</span>
+        <li class="never" data-hits="" data-linenumber="14">
           
-          <code class="ruby">    @game_guesses = GameGuess.find_all_by_game_id(@game.id)</code>
+          
+          <code class="ruby"></code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
@@ -557,8 +557,8 @@
           <code class="ruby">#    flash[:notice] = &quot;#{@game.title} was successfully updated.&quot;</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="16">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="5" data-linenumber="16">
+          <span class="hits">5</span>
           
           <code class="ruby">    if @game.check_code(params[:guessed_code]) == &quot;4&quot;</code>
         </li>
@@ -680,8 +680,8 @@
     <h3>app/models/game.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>12</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
+      <b>15</b> relevant lines. 
+      <span class="green"><b>15</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -698,100 +698,142 @@
         <li class="covered" data-hits="2" data-linenumber="2">
           <span class="hits">2</span>
           
-          <code class="ruby">  after_create {</code>
+          <code class="ruby">  has_many :game_guesses,  dependent: :destroy</code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="3">
-          <span class="hits">13</span>
+        <li class="never" data-hits="" data-linenumber="3">
           
-          <code class="ruby">    self.secret_code = '????'</code>
+          
+          <code class="ruby">  </code>
         </li>
       
-        <li class="covered" data-hits="13" data-linenumber="4">
-          <span class="hits">13</span>
+        <li class="covered" data-hits="2" data-linenumber="4">
+          <span class="hits">2</span>
           
-          <code class="ruby">    self.save!</code>
+          <code class="ruby">  after_create :save_secret_code</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="5">
           
           
-          <code class="ruby">  }</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
-          
-          
-          <code class="ruby">  </code>
-        </li>
-      
-        <li class="covered" data-hits="2" data-linenumber="7">
+        <li class="covered" data-hits="2" data-linenumber="6">
           <span class="hits">2</span>
           
           <code class="ruby">  def check_code(text)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="8">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="7">
+          <span class="hits">8</span>
           
           <code class="ruby">    text = &quot;XXXX&quot; if text.nil?</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="9">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="8">
+          <span class="hits">8</span>
           
           <code class="ruby">    @result=0</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="10">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="9">
+          <span class="hits">8</span>
           
           <code class="ruby">    @index=0</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="11">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="10">
+          <span class="hits">8</span>
           
           <code class="ruby">    text.upcase.each_char do |c|</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="12">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="32" data-linenumber="11">
+          <span class="hits">32</span>
           
           <code class="ruby">      @result += 1 if self.secret_code[@index] == c</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="13">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="32" data-linenumber="12">
+          <span class="hits">32</span>
           
           <code class="ruby">      @index += 1</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="never" data-hits="" data-linenumber="13">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="15">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="14">
+          <span class="hits">8</span>
           
           <code class="ruby">    return @result.to_s</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="16">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="17">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby">  </code>
         </li>
       
+        <li class="covered" data-hits="2" data-linenumber="17">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
         <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="covered" data-hits="2" data-linenumber="19">
+          <span class="hits">2</span>
+          
+          <code class="ruby">  def save_secret_code</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="20">
+          <span class="hits">12</span>
+          
+          <code class="ruby">    self.secret_code = '????'</code>
+        </li>
+      
+        <li class="covered" data-hits="12" data-linenumber="21">
+          <span class="hits">12</span>
+          
+          <code class="ruby">    self.save!</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="22">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="23">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="24">
+          
+          
+          <code class="ruby">  </code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="25">
           
           
           <code class="ruby">end</code>

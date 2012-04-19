@@ -16,7 +16,7 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'simplecov'
-#  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+  gem 'factory_girl_rails', "~> 3.0", :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
 end
 
 group :production do

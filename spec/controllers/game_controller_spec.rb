@@ -53,10 +53,40 @@ describe GameController do
   end
   
     it 'should save all the guesses' do
-      post :playing, {:game_id => "10", :guessed_code => "ABCD" }
-      post :playing, {:game_id => "10", :guessed_code => "BCDA" }
+      post :playing, {:game_id => "10", :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
+      post :playing, {:game_id => "10", :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
 
       @game.game_guesses.length.should be == 2
     end
   end
+
+  describe 'Guess code sanity' do
+  
+  before :each do
+        @game = FactoryGirl.build(:game_with_guesses)
+        Game.stub(:find).and_return(@game)
+        @fake_guess = FactoryGirl.build(:game_guess, :code => "ABCD")
+        @fake_guess.stub(:build).and_return(@fake_guess)
+        @game.stub(:game_guesses).and_return(@fake_guess)
+  end
+  
+    it 'should save the submitted code' do
+      post :playing, {:game_id => @game.id, :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
+      
+      @guess = @game.game_guesses
+      @guess.code.should be == "ABCD"
+    end
+    
+    it 'should save the submitted code and no other' do
+      @fake_guess.code="DBCA"
+      
+      post :playing, {:game_id => @game.id, :code => {"0"=>"D", "1"=>"B", "2"=>"C", "3"=>"A"} }
+      
+      @guess = @game.game_guesses
+      @guess.code.should_not == "ABCD"
+    end
+    
+  end  
+  
+  
 end

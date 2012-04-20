@@ -8,4 +8,7 @@
 
 %body#= controller.controller_name
 = yield
+%footer
+  %h4 Params
+    =debug(params)
 

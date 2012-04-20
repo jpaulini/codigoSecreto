@@ -1,7 +1,7 @@
 FactoryGirl.define do
   
   factory :game_guess do
-    id
+    id 100
     game
     code "ABCD"
   end  

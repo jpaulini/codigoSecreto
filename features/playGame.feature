@@ -7,10 +7,10 @@ Scenario: Trying a first guess and winning
 
 Given I should be on the Start Game page
 When I fill in the following:
-     | firstCell      | 'A' |
-     | secondCell     | 'B' |
-     | thirdCell      | 'C' |
-     | fourthCell     | 'D' |
+     | code[0]   | 'A' |
+     | code[1]   | 'B' |
+     | code[2]   | 'C' |
+     | code[3]   | 'D' |
 And I press "Guess!"
 Then I should be on playing page
 And I should see the code table

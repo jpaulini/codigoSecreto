@@ -10,10 +10,11 @@ class GameController < ApplicationController
 
   def playing
     @game = Game.find params[:game_id]
-    @game.game_guesses.build(:code => params[:guessed_code])
+    @code_text = params[:code].values.join if not params[:code].nil?
+    @guess = @game.game_guesses.build(:code => @code_text )
 
 #    flash[:notice] = "#{@game.title} was successfully updated."
-    if @game.check_code(params[:guessed_code]) == "4"
+    if @game.check_code(@code_text) == "4"
       redirect_to game_over_path(:game_id => @game.id)
     end
   end

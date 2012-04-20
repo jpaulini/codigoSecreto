@@ -12,9 +12,9 @@
 
 =form_tag game_playing_path :method => :post  do
   = hidden_field_tag "game_id" , @game.id if @game
-  = text_field_tag "firstCell", ' ' 
-  = text_field_tag "secondCell", ' ', :onChange => 'calculate();'
-  = text_field_tag "thirdCell", ' ' , :onChange => 'calculate();'
-  = text_field_tag "fourthCell", ' ' , :onChange => 'calculate();'
+  = text_field_tag "code[0]", ' '
+  = text_field_tag "code[1]", ' '  
+  = text_field_tag "code[2]", ' ' 
+  = text_field_tag "code[3]", ' ' 
   = hidden_field_tag "guessed_code", "ABCD"
   = submit_tag 'Guess!', :id => 'guess_submit'

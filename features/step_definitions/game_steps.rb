@@ -27,10 +27,19 @@ Then /^I should see the guesses table with "(.*)"$/ do | guess |
 
 end
 
-
-
 Given /^I started a new game$/ do
     step "I go to the home page"
     step 'I follow "Start a new game"'
 end
+
+Given /^the following guesses were issued$/ do |table|
+  table.hashes.each do |guess|
+    select(guess["code[0]"], :from => "code[0]")
+    select(guess["code[1]"], :from => "code[1]")
+    select(guess["code[2]"], :from => "code[2]")
+    select(guess["code[3]"], :from => "code[3]")
+    step 'I press "Guess!"'
+  end
+end
+
 

@@ -23,7 +23,8 @@ describe GameController do
 	describe "Checking guesses against secret code" do
       before :each do
         @game = mock('Game')
-        @game_guesses = mock('GameGuess',:build =>"")
+        @game_guesses = mock('GameGuess',:save =>"")
+        @game_guesses.stub(:build).and_return(@game_guesses)
         @game.stub(:id).and_return("1")     
         @game.stub(:game_guesses).and_return(@game_guesses)
         Game.stub(:find).with("1").and_return(@game)
@@ -32,14 +33,14 @@ describe GameController do
 		it "should return true if the guess == secret code" do  
         @game.stub(:check_code).and_return("4")
 
-        post :playing, {:game_id => "1"}
+        post :playing, {:game_id => "1", :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
   		  response.should redirect_to(:controller => 'game' , :action => 'over' ,:game_id => '1')
 		end
 		
 		it "should keep the playing page if failure" do
         @game.stub(:check_code).and_return("2")
 
-        post :playing, {:game_id => "1"}
+        post :playing, {:game_id => "1", :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"}}
   		  response.should render_template('playing')
     end
 
@@ -48,15 +49,17 @@ describe GameController do
   describe 'Keeping all de guesses' do
   
   before :each do
-        @game = FactoryGirl.build(:game)
+        @game = FactoryGirl.create(:game)
         Game.stub(:find).and_return(@game)
   end
   
     it 'should save all the guesses' do
-      post :playing, {:game_id => "10", :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
-      post :playing, {:game_id => "10", :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
+      post :playing, {:game_id => @game.id, :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
+      post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
+      post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
 
-      @game.game_guesses.length.should be == 2
+
+      @game.game_guesses.count.should be == 3
     end
   end
 

@@ -1,18 +1,18 @@
 FactoryGirl.define do
   
   factory :game_guess do
-    id 100
+    sequence(:id) {|n| "1#{n}" }
     game
     code "ABCD"
   end  
 
   factory :game do
-    id "23"
+    sequence(:id) {|n| "2#{n}" }
     secret_code "ZZZZ"
     
     factory :game_with_guesses do
       ignore do
-        guesses_count 5
+        guess_count 5
       end
       
       after_create do |game, evaluator|

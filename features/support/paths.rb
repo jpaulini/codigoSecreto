@@ -30,6 +30,10 @@ module NavigationHelpers
     when /^playing page$/i
     '/game/playing'
 
+    when /^game over page$/i
+    '/game/over'
+
+
     else
       begin
         page_name =~ /^the (.*) page$/

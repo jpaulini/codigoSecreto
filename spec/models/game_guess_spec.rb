@@ -6,6 +6,18 @@ describe GameGuess do
       g=GameGuess.create!
       g.should_not be_nil
     end
+    
+    it 'should store in the ord field the sequence order' do
+      t=Game.create!
+      m1=t.game_guesses.build()
+      m1.save
+      m2=t.game_guesses.build()
+      m2.save
+      
+      m2.ord.should be == 2
+      
+    end
+    
   end
   
   describe 'finding game moves ' do

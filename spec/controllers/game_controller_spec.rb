@@ -56,37 +56,42 @@ describe GameController do
     it 'should save all the guesses' do
       post :playing, {:game_id => @game.id, :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
       post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
-      post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
+      post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"F", "2"=>"A", "3"=>"D"} } 
 
 
       @game.game_guesses.count.should be == 3
     end
+    
+    it 'Should store the number of guesses' do
+      post :playing, {:game_id => @game.id, :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
+      post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"C", "2"=>"A", "3"=>"D"} } 
+      post :playing, {:game_id => @game.id, :code => {"0"=>"B", "1"=>"F", "2"=>"A", "3"=>"D"} } 
+
+     GameGuess.where(:game_id => @game.id, :code => "ABCD")[0].ord.should be == 1 and
+     GameGuess.where(:game_id => @game.id, :code => "BCAD")[0].ord.should be == 2 and
+     GameGuess.where(:game_id => @game.id, :code => "BFAD")[0].ord.should be == 3
+
+
+  
+    end
+    
   end
 
   describe 'Guess code sanity' do
   
   before :each do
-        @game = FactoryGirl.build(:game_with_guesses)
+        @game = FactoryGirl.create(:game)
         Game.stub(:find).and_return(@game)
-        @fake_guess = FactoryGirl.build(:game_guess, :code => "ABCD")
+        @fake_guess = FactoryGirl.create(:game_guess, :game_id => @game_id, :code => "FBCD")
         @fake_guess.stub(:build).and_return(@fake_guess)
         @game.stub(:game_guesses).and_return(@fake_guess)
   end
   
     it 'should save the submitted code' do
-      post :playing, {:game_id => @game.id, :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
+      post :playing, {:game_id => @game.id, :code => {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"} }
       
       @guess = @game.game_guesses
-      @guess.code.should be == "ABCD"
-    end
-    
-    it 'should save the submitted code and no other' do
-      @fake_guess.code="DBCA"
-      
-      post :playing, {:game_id => @game.id, :code => {"0"=>"D", "1"=>"B", "2"=>"C", "3"=>"A"} }
-      
-      @guess = @game.game_guesses
-      @guess.code.should_not == "ABCD"
+      @guess.code.should be == "FBCD"
     end
     
   end  

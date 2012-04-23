@@ -25,6 +25,7 @@ describe GameController do
         @game = mock('Game')
         @game_guesses = mock('GameGuess',:save =>"")
         @game_guesses.stub(:build).and_return(@game_guesses)
+        @game_guesses.stub(:ord).and_return(5)
         @game.stub(:id).and_return("1")     
         @game.stub(:game_guesses).and_return(@game_guesses)
         Game.stub(:find).with("1").and_return(@game)
@@ -70,17 +71,29 @@ describe GameController do
      GameGuess.where(:game_id => @game.id, :code => "ABCD")[0].ord.should be == 1 and
      GameGuess.where(:game_id => @game.id, :code => "BCAD")[0].ord.should be == 2 and
      GameGuess.where(:game_id => @game.id, :code => "BFAD")[0].ord.should be == 3
-
-
   
     end
+    
+    it 'Should render the game over page if no success after 10 trials' do
+    @game.stub(:check_code).and_return(0)
+    @fake_guess=FactoryGirl.create(:game_guess, game_id: @game.id)
+    @fake_guess.stub(:build).and_return(@fake_guess)
+    @fake_guess.stub(:ord).and_return(10)
+    @game.stub(:game_guesses).and_return(@fake_guess)
+    
+      post :playing, {:game_id => @game.id, :code => {"0"=>"A", "1"=>"B", "2"=>"C", "3"=>"D"} }
+
+	  response.should redirect_to(:controller => 'game' , :action => 'over' ,:game_id => @game.id)
+        
+    end
+    
     
   end
 
   describe 'Guess code sanity' do
   
   before :each do
-        @game = FactoryGirl.create(:game)
+        @game = FactoryGirl.create(:game, id: "121")
         Game.stub(:find).and_return(@game)
         @fake_guess = FactoryGirl.create(:game_guess, :game_id => @game_id, :code => "FBCD")
         @fake_guess.stub(:build).and_return(@fake_guess)

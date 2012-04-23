@@ -19,6 +19,10 @@ class GameController < ApplicationController
       redirect_to game_over_path(:game_id => @game.id)
     end
     
+    if @guess.ord == 10 
+      redirect_to game_over_path(:game_id => @game.id)
+    end
+    
   end
       
   def over

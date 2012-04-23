@@ -109,5 +109,18 @@ describe GameController do
     
   end  
   
+  describe 'should maintain data when playing: ' do
+    it 'Should maintain last code issued' do
+      @game = FactoryGirl.create(:game, id: "222")
+      Game.stub(:find).and_return(@game)
+      
+      post :playing, {:game_id => @game.id, :code => {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"} }
+    
+      assert session[:last_code] == {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"}
+    end
+  
+  end
+  
+  
   
 end

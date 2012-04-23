@@ -42,5 +42,16 @@ When the following guesses were issued
      | A       |  B      |  C      |  D      |
 Then I should be on game over page
 
+Scenario: Should keep the last guess issued
+Given  I should be on the Start Game page
+When the following guesses were issued
+     | code[0] | code[1] | code[2] | code[3] |
+     | D       |  B      |  C      |  A      |
+Then the "code[0]" field should be set to "D"
+And the "code[1]" field should be set to "B"
+And the "code[2]" field should be set to "C"
+And the "code[3]" field should be set to "A"
+
+
 
 

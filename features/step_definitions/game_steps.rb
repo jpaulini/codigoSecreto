@@ -42,4 +42,12 @@ Given /^the following guesses were issued$/ do |table|
   end
 end
 
-
+Then /^the "([^"]*)" field should be set to "([^"]*)"$/ do |field, value|
+    field = find_field(field)
+    field_value = (field.tag_name == 'textarea') ? field.text : field.value
+    if field_value.respond_to? :should
+      field_value.should == value
+    else
+      assert_equal(value, field_value)
+    end
+end

@@ -11,9 +11,9 @@
         
 =form_tag game_playing_path :method => :post  do
   = hidden_field_tag "game_id" , @game.id if @game
-  = select_tag "code[0]", options_for_select(['A','B','C','D','E','F'])
-  = select_tag "code[1]", options_for_select(['A','B','C','D','E','F'])
-  = select_tag "code[2]", options_for_select(['A','B','C','D','E','F'])
-  = select_tag "code[3]", options_for_select(['A','B','C','D','E','F'])
+  - idx=0
+  - 4.times.each do 
+    = select_tag %{code[#{idx}]}, options_for_select(['A','B','C','D','E','F'], session["last_code"][ idx.to_s ] )
+    -idx +=1
   = submit_tag 'Guess!', :id => 'guess_submit'
 

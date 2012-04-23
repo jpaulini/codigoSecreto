@@ -10,8 +10,11 @@ class GameController < ApplicationController
 
   def playing
     @game = Game.find params[:game_id]
+    session[:last_code] = params[:code]
+    
     code_text = params[:code].values.join if not params[:code].nil?
     @guess = @game.game_guesses.build(code: code_text )
+
     
     @guess.save
 

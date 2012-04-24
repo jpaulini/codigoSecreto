@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:id) {|n| "1#{n}" }
     game
     code "ABCD"
+    result 1
   end  
 
   factory :game do

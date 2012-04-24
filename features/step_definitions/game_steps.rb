@@ -51,3 +51,17 @@ Then /^the "([^"]*)" field should be set to "([^"]*)"$/ do |field, value|
       assert_equal(value, field_value)
     end
 end
+
+When /^I should see the guesses table with "(.*)" and a number$/ do |guess |
+  guess = guess + " [0-3]"
+  regexp = Regexp.new(guess.gsub(" ",".*"), Regexp::MULTILINE)
+
+  if page.respond_to? :should
+    page.should have_xpath('//table', {:id => "guesses-table", :text => regexp}), page.text
+  else
+    assert page.has_xpath?('//table', {:id => "guesses-table", :text => regexp}) , page.text
+  end
+
+  #pending # express the regexp above with the code you wish you had
+end
+

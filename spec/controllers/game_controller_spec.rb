@@ -26,6 +26,7 @@ describe GameController do
         @game_guesses = mock('GameGuess',:save =>"")
         @game_guesses.stub(:build).and_return(@game_guesses)
         @game_guesses.stub(:ord).and_return(5)
+        @game_guesses.stub(:result=).and_return("")
         @game.stub(:id).and_return("1")     
         @game.stub(:game_guesses).and_return(@game_guesses)
         Game.stub(:find).with("1").and_return(@game)
@@ -90,37 +91,39 @@ describe GameController do
     
   end
 
-  describe 'Guess code sanity' do
-  
-  before :each do
-        @game = FactoryGirl.create(:game, id: "121")
-        Game.stub(:find).and_return(@game)
-        @fake_guess = FactoryGirl.create(:game_guess, :game_id => @game_id, :code => "FBCD")
-        @fake_guess.stub(:build).and_return(@fake_guess)
-        @game.stub(:game_guesses).and_return(@fake_guess)
-  end
-  
-    it 'should save the submitted code' do
-      post :playing, {:game_id => @game.id, :code => {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"} }
-      
-      @guess = @game.game_guesses
-      @guess.code.should be == "FBCD"
-    end
-    
-  end  
   
   describe 'should maintain data when playing: ' do
-    it 'Should maintain last code issued' do
-      @game = FactoryGirl.create(:game, id: "222")
+    before :each do
+      @game = FactoryGirl.create(:game_with_guesses, guess_count: 3, id: "333")
       Game.stub(:find).and_return(@game)
+    end
+
+    it 'session should maintain last code issued' do
       
       post :playing, {:game_id => @game.id, :code => {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"} }
     
       assert session[:last_code] == {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"}
     end
-  
+    
+    it 'Should maintain last result in game_guess table' do
+      
+      post :playing, {:game_id => @game.id, :code => {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"} }
+    
+      assert GameGuess.find_all_by_game_id(@game.id).last.code.should be == "FBCD"
+    end
+    
+    it 'Should maintain results of each guess' do
+      #chequear que haya guardado el resultado en cada item      
+      @fake_guess=@game.game_guesses.last
+      @fake_guess.stub(:build).and_return(@fake_guess)
+      @game.stub(:game_guesses).and_return(@fake_guess)
+      @game.stub(:check_code).and_return(2)
+            
+      post :playing, {:game_id => @game.id, :code => {"0"=>"F", "1"=>"B", "2"=>"C", "3"=>"D"} }
+
+      assert @fake_guess.result.should be == 2
+    end
   end
-  
-  
+    
   
 end

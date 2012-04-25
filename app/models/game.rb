@@ -17,7 +17,14 @@ class Game < ActiveRecord::Base
   private
   
   def save_secret_code
-    self.secret_code = '????'
+    r=Random.new(Time.new().to_i)
+    self.secret_code="    "
+    letters='ABCDEF'
+    4.times do |index|
+      choosen=letters[r.rand(0..5-index)]
+      self.secret_code[index] = choosen
+      letters=letters.delete(choosen)
+    end
     self.save!
   end
   

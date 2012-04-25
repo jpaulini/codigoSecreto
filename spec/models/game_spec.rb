@@ -63,5 +63,17 @@ describe Game do
 	  end
 	  
   end
+  
+  describe 'checking code sanity'do
+    it 'should have a code composed of A-F letters only' do
+      @game=Game.create!
+      @game.secret_code.should match /^[A-F][A-F][A-F][A-F]$/
+    end
+
+    it 'should not contain repeated letters' do
+      @game=Game.create!
+      assert ( @game.secret_code[0] != @game.secret_code[1] and @game.secret_code[0] != @game.secret_code[2] and @game.secret_code[0] != @game.secret_code[3] and @game.secret_code[1] != @game.secret_code[2] and @game.secret_code[1] != @game.secret_code[3] and @game.secret_code[2] != @game.secret_code[3] ), %{#{@game.secret_code} contains repeated letters}
+    end
+  end
 
 end

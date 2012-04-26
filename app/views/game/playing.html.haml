@@ -1,6 +1,7 @@
-%h1 Game#playing
-%p Find me in app/views/game/playing.html.haml
 %table#code-table
+  %tr
+  -4.times do
+    %td#secret_code
 
 %table#guesses-table
   - if not @game.nil?

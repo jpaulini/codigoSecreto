@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 %html
 %head
-  %title CodigoSecreto
-    = stylesheet_link_tag    "application"
-    = javascript_include_tag "application"
-    = csrf_meta_tags
+  = stylesheet_link_tag    "application"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+  %title= sanitize("Código Secreto!")
 
-%body#= controller.controller_name
-= yield
+%body
+  %div{:id => "banner"}
+    #h1= sanitize("Código Secreto!")
+  %div{:id => "columns"}
+    %div{:id => "left_side"}
+    %div{:id => "main"}
+      =yield
+  
 %footer
-  %h4 Params
-    =debug(params)
 

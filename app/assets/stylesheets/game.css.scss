@@ -1,3 +1,41 @@
 // Place all the styles related to the Game controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+FORM {  
+	border-color:#dacf83;
+	background-color:#faee96;
+	border:1px solid #c8be78;
+}
+
+SELECT {
+	border-color:#dacf83;
+	background-color:#faee96;
+	border:1px solid #c8be78;
+}
+
+
+/* unique IDs */
+#code_0 {  }
+
+#code_1 {  }
+
+#code_2 {  }
+
+#code_3 {  }
+
+#code-table { 
+	border-color:#dacf83;
+	background-color:#faee96;
+	border:1px solid #c8be78;
+	width:33%;
+}
+
+#guess_submit {  }
+
+#guesses-table { 
+	border-color:#dacf83;
+	background-color:#faee96;
+	border:1px solid #c8be78;
+	width:33%;
+}

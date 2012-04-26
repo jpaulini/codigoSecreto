@@ -8,3 +8,4 @@ db/*.sqlite3
 log/
 tmp/
 .sass-cache/
+coverage/

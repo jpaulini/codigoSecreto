@@ -6,6 +6,8 @@ FORM {
 	border-color:#dacf83;
 	background-color:#faee96;
 	border:1px solid #c8be78;
+	width: 33%;
+	text-align: center;
 }
 
 SELECT {
@@ -16,13 +18,9 @@ SELECT {
 
 
 /* unique IDs */
-#code_0 {  }
-
-#code_1 {  }
-
-#code_2 {  }
-
-#code_3 {  }
+#code_0 #code_1 #code_2 #code_3 {
+  font-size: medium;
+}
 
 #code-table { 
 	border-color:#dacf83;
@@ -31,7 +29,11 @@ SELECT {
 	width:33%;
 }
 
-#guess_submit {  }
+#guess_submit {
+	background-color: #b2d45b;
+  font-size-adjust: inherit;
+  font-size: medium;
+}
 
 #guesses-table { 
 	border-color:#dacf83;

@@ -26,21 +26,6 @@ And I should see the code table
 And I should see the guesses table with "A B C D"
 And I should see the guesses table with "A C B D"
 
-Scenario: Should not play more than 10 times
-Given I should be on the Start Game page
-When the following guesses were issued
-     | code[0] | code[1] | code[2] | code[3] |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-     | A       |  B      |  C      |  D      |
-Then I should be on game over page
 
 Scenario: Should keep the last guess issued
 Given  I should be on the Start Game page

@@ -2,13 +2,6 @@ require 'spec_helper'
 
 describe GameController do
 
-  describe "GET 'over'" do
-    it "returns http success" do
-      get 'over'
-      response.should be_success
-    end
-  end
-
   describe 'starting a new game'
     it 'should create a new record when I start a new game' do
       @game = mock('Game')
@@ -124,6 +117,15 @@ describe GameController do
       assert @fake_guess.result.should be == 2
     end
   end
-    
+
+  describe 'Should check results'  
+  it 'Show a message when player wins' do
+    pending
+  end
+
+  it 'Show a message when player lose' do
+    pending
+  end
+ 
   
 end

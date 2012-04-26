@@ -28,6 +28,17 @@ class GameController < ApplicationController
   end
       
   def over
+     @game = Game.find params[:game_id]
+     rescue ActiveRecord::RecordNotFound 
+      redirect_to game_new_path
+     else
+        @n_guesses = @game.game_guesses.count
+        if @n_guesses == 10
+          @message = "Mala suerte!"
+        else
+          @message = "Muy bien!"
+        end
+     
   end
 
 end

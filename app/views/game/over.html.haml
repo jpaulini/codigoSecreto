@@ -1,2 +1,4 @@
-%h1 Game#over
-%p Find me in app/views/game/over.html.haml
+%h1=@message
+%br
+=link_to sanitize('¿Volver a jugar?'), game_new_path 
+

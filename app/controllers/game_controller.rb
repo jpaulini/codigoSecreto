@@ -19,10 +19,10 @@ class GameController < ApplicationController
 
     if @game.check_code(code_text) == "4"
       redirect_to game_over_path(:game_id => @game.id)
-    end
-    
-    if guess.ord == 10 
-      redirect_to game_over_path(:game_id => @game.id)
+    else
+      if guess.ord == 10 
+          redirect_to game_over_path(:game_id => @game.id)
+      end
     end
     
   end
@@ -33,10 +33,10 @@ class GameController < ApplicationController
       redirect_to game_new_path
      else
         @n_guesses = @game.game_guesses.count
-        if @n_guesses == 10
-          @message = "Mala suerte!"
-        else
+        if @n_guesses <= 10 and @game.game_guesses.last.result == "4"
           @message = "Muy bien!"
+        else
+          @message = "Mala suerte!"
         end
      
   end

@@ -5,7 +5,7 @@
 
 %table#guesses-table
   - if not @game.nil?
-    - @game.game_guesses.each do |guess|
+    - @game.game_guesses.sort.each do |guess|
       %tr
       - guess.code.each_char do |c|
         %td= c.to_s

@@ -120,11 +120,21 @@ describe GameController do
 
   describe 'Should check results'  
   it 'Show a message when player wins' do
-    pending
+    @game = FactoryGirl.create(:game_with_guesses_and_won, id: "335")
+    Game.stub(:find).and_return(@game)
+          
+    post :over, {:game_id => @game.id}
+    assigns(:message).should be == "Muy bien!"
+
   end
 
   it 'Show a message when player lose' do
-    pending
+    @game = FactoryGirl.create(:game_with_guesses, guess_count: 10, id: "336")
+    Game.stub(:find).and_return(@game)
+          
+    post :over, {:game_id => @game.id}
+
+    assigns(:message).should be == "Mala suerte!"
   end
  
   

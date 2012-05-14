@@ -33,7 +33,7 @@ class GameController < ApplicationController
       redirect_to game_new_path
      else
         @n_guesses = @game.game_guesses.count
-        if @n_guesses <= 10 and @game.game_guesses.last.result == "4"
+        if @n_guesses <= 10 and @game.game_guesses.last.result == 4
           @message = "Muy bien!"
         else
           @message = "Mala suerte!"

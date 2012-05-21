@@ -1,4 +1,6 @@
 CodigoSecreto::Application.routes.draw do
+  resources :users
+
   get "game/start"
 
   get "game/new"

@@ -1,4 +1,18 @@
+require 'bcrypt'
+
 FactoryGirl.define do
+
+  factory :user do
+    name 'nobody'
+    password_digest BCrypt::Password.create('not4long')
+    is_admin false
+  end
+  
+  factory :admin, class: User do
+    name 'Admin'
+    password_digest BCrypt::Password.create('secret')
+    is_admin true
+  end
   
   factory :game_guess do
     sequence(:id) {|n| "1#{n}" }

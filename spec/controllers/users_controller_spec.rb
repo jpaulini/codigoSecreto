@@ -24,7 +24,7 @@ describe UsersController do
   # User. As you add validations to User, be sure to
   # update the return value of this method accordingly.
   def valid_attributes
-    {}
+    { :name => "Nobody", :password => "not4long" }
   end
   
   # This should return the minimal set of values that should be in the session
@@ -81,7 +81,7 @@ describe UsersController do
 
       it "redirects to the created user" do
         post :create, {:user => valid_attributes}, valid_session
-        response.should redirect_to(User.last)
+        response.should redirect_to(users_url)
       end
     end
 
@@ -123,7 +123,7 @@ describe UsersController do
       it "redirects to the user" do
         user = User.create! valid_attributes
         put :update, {:id => user.to_param, :user => valid_attributes}, valid_session
-        response.should redirect_to(user)
+        response.should redirect_to(users_url)
       end
     end
 

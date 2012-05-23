@@ -1,5 +1,4 @@
 CodigoSecreto::Application.routes.draw do
-  get "admin/index"
 
   controller :sessions do
     get "login" => :new

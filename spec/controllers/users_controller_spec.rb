@@ -31,10 +31,16 @@ describe UsersController do
   # in order to pass any filters (e.g. authentication) defined in
   # UsersController. Be sure to keep this updated too.
   def valid_session
-    {}
+    { :user_id => 1 }
   end
+  
+#  before :each do
+#    @fake_admin = FactoryGirl.create(:admin)
+#    User.stub(:find).with(1).and_return(@fake_admin)
+#  end
 
   describe "GET index" do
+  
     it "assigns all users as @users" do
       user = User.create! valid_attributes
       get :index, {}, valid_session
@@ -43,6 +49,7 @@ describe UsersController do
   end
 
   describe "GET show" do
+
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
       get :show, {:id => user.to_param}, valid_session
@@ -51,6 +58,7 @@ describe UsersController do
   end
 
   describe "GET new" do
+
     it "assigns a new user as @user" do
       get :new, {}, valid_session
       assigns(:user).should be_a_new(User)
@@ -58,6 +66,7 @@ describe UsersController do
   end
 
   describe "GET edit" do
+
     it "assigns the requested user as @user" do
       user = User.create! valid_attributes
       get :edit, {:id => user.to_param}, valid_session
@@ -66,6 +75,7 @@ describe UsersController do
   end
 
   describe "POST create" do
+
     describe "with valid params" do
       it "creates a new User" do
         expect {
@@ -103,6 +113,7 @@ describe UsersController do
   end
 
   describe "PUT update" do
+
     describe "with valid params" do
       it "updates the requested user" do
         user = User.create! valid_attributes
@@ -128,6 +139,7 @@ describe UsersController do
     end
 
     describe "with invalid params" do
+
       it "assigns the user as @user" do
         user = User.create! valid_attributes
         # Trigger the behavior that occurs when invalid params are submitted
@@ -147,6 +159,7 @@ describe UsersController do
   end
 
   describe "DELETE destroy" do
+
     it "destroys the requested user" do
       user = User.create! valid_attributes
       expect {

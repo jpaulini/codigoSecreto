@@ -1,10 +1,12 @@
-Feature: User can start a new game
+Feature: User can login to start a new game
 
-Scenario: Start a new game
+Scenario: Accesing log in page
+
 Given I am on the home page
-When I follow "Start a new game"
+When I follow "Login"
+Then I should be on the log in page
+
+Scenario: User logs in
+
+Given a user is logged in as "nobody"
 Then I should be on the Start Game page
-And I should see the code table
-And I should see the guesses table
-
-

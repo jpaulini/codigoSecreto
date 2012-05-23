@@ -3,12 +3,14 @@ require 'bcrypt'
 FactoryGirl.define do
 
   factory :user do
+    id 10
     name 'nobody'
     password_digest BCrypt::Password.create('not4long')
     is_admin false
   end
   
   factory :admin, class: User do
+    id 1
     name 'Admin'
     password_digest BCrypt::Password.create('secret')
     is_admin true

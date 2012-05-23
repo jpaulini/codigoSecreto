@@ -4,9 +4,14 @@ describe GameController do
 
   describe 'starting a new game'
     it 'should create a new record when I start a new game' do
-      @game = mock('Game')
-      @game.stub(:id).and_return("200")
-      Game.stub(:create!).and_return(@game)
+      session[:user_id] = 10
+      @fake_user = mock('User', id: 10)
+      User.stub(:find).and_return(@fake_user)
+      User.stub(:find_by_id).and_return(@fake_user)
+      @fake_game = mock('Game')
+      @fake_game.stub(:create!).and_return(@fake_game)
+      @fake_game.stub(:id).and_return("200")
+      @fake_user.stub(:games).and_return(@fake_game)
       
       get :new
  		  response.should redirect_to(:controller => 'game' , :action => 'start' ,:game_id => '200')
@@ -15,6 +20,10 @@ describe GameController do
 
 	describe "Checking guesses against secret code" do
       before :each do
+      session[:user_id] = 10
+      @fake_user = mock('User', id: 10)
+      User.stub(:find).and_return(@fake_user)
+
         @game = mock('Game')
         @game_guesses = mock('GameGuess',:save =>"")
         @game_guesses.stub(:build).and_return(@game_guesses)
@@ -22,7 +31,13 @@ describe GameController do
         @game_guesses.stub(:result=).and_return("")
         @game.stub(:id).and_return("1")     
         @game.stub(:game_guesses).and_return(@game_guesses)
-        Game.stub(:find).with("1").and_return(@game)
+        @games = [@game, @game]
+        @games.stub(:find).with("1").and_return(@game)
+  #added for user selectivity
+        session[:user_id] = 10
+        @fake_user = mock('User', id: 10)
+        User.stub(:find).and_return(@fake_user)
+        @fake_user.stub(:games).and_return(@games)
       end
 
 		it "should return true if the guess == secret code" do  
@@ -44,8 +59,14 @@ describe GameController do
   describe 'Keeping all de guesses' do
   
   before :each do
-        @game = FactoryGirl.create(:game)
-        Game.stub(:find).and_return(@game)
+    @game = FactoryGirl.create(:game)
+    @games = [@game, @game]
+    @games.stub(:find).and_return(@game)
+  #added for user selectivity
+    session[:user_id] = 10
+    @fake_user = mock('User', id: 10)
+    User.stub(:find).and_return(@fake_user)
+    @fake_user.stub(:games).and_return(@games)
   end
   
     it 'should save all the guesses' do
@@ -88,7 +109,14 @@ describe GameController do
   describe 'should maintain data when playing: ' do
     before :each do
       @game = FactoryGirl.create(:game_with_guesses, guess_count: 3, id: "333")
-      Game.stub(:find).and_return(@game)
+#      Game.stub(:find).and_return(@game)
+      @games = [@game, @game]
+      @games.stub(:find).with("333").and_return(@game)
+  #added for user selectivity
+      session[:user_id] = 10
+      @fake_user = mock('User', id: 10)
+      User.stub(:find).and_return(@fake_user)
+      @fake_user.stub(:games).and_return(@games)
     end
 
     it 'session should maintain last code issued' do
@@ -119,9 +147,18 @@ describe GameController do
   end
 
   describe 'Should check results'  
+
+
   it 'Show a message when player wins' do
     @game = FactoryGirl.create(:game_with_guesses_and_won, id: "335")
-    Game.stub(:find).and_return(@game)
+    @games = [@game, @game]
+    @games.stub(:find).with("335").and_return(@game)
+  #added for user selectivity
+    session[:user_id] = 10
+    @fake_user = mock('User', id: 10)
+    User.stub(:find).and_return(@fake_user)
+    @fake_user.stub(:games).and_return(@games)
+
           
     post :over, {:game_id => @game.id}
     assigns(:message).should be == "Muy bien!"
@@ -130,7 +167,13 @@ describe GameController do
 
   it 'Show a message when player lose' do
     @game = FactoryGirl.create(:game_with_guesses, guess_count: 10, id: "336")
-    Game.stub(:find).and_return(@game)
+    @games = [@game, @game]
+    @games.stub(:find).with("336").and_return(@game)
+  #added for user selectivity
+    session[:user_id] = 10
+    @fake_user = mock('User', id: 10)
+    User.stub(:find).and_return(@fake_user)
+    @fake_user.stub(:games).and_return(@games)
           
     post :over, {:game_id => @game.id}
 

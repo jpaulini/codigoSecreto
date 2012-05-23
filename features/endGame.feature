@@ -2,7 +2,8 @@ Feature: Game should end, once matched the code or failing
 
 
 Background:
-  Given I started a new game
+Given a user is logged in as "nobody"
+And I started a new game
 
 Scenario: Failure: Should not play more than 10 times
 Given I should be on the Start Game page

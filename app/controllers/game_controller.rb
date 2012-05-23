@@ -1,4 +1,6 @@
 class GameController < ApplicationController
+  skip_before_filter :authorize_admin
+  
   def new
     @user = User.find(session[:user_id])
     rescue ActiveRecord::RecordNotFound

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_filter :authorize
+  skip_before_filter :authorize_admin
   
   def new
   end
@@ -9,7 +10,7 @@ class SessionsController < ApplicationController
     if user and user.authenticate(params[:password])
       session[:user_id]=user.id
       if user.is_admin
-        redirect_to admin_url
+        redirect_to users_url
       else
         redirect_to game_new_url
       end

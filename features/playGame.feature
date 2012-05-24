@@ -1,7 +1,8 @@
 Feature: User can play game
 
 Background:
-  Given I started a new game
+Given a user is logged in as "nobody"
+And I started a new game
 
 Scenario: Trying a first guess
 

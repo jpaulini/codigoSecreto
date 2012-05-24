@@ -1,4 +1,5 @@
 class Game < ActiveRecord::Base
+  belongs_to :user
   has_many :game_guesses,  dependent: :destroy
   
   after_create :save_secret_code

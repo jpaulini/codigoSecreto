@@ -33,6 +33,9 @@ module NavigationHelpers
     when /^game over page$/i
     '/game/over'
 
+    when /^the log in page$/i
+    '/login'
+
 
     else
       begin

@@ -42,4 +42,5 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'haml'
-gem "haml-rails"
+gem 'haml-rails'
+gem 'bcrypt-ruby', '~> 3.0.0'

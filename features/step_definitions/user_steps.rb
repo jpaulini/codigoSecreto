@@ -12,3 +12,4 @@ Given /^a user is logged in as "(.*)"$/ do |login|
   click_button("Login")
   
 end
+

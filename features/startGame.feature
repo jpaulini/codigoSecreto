@@ -32,3 +32,9 @@ Scenario: User is redirected if not logged in (III)
 Given I am on the home page
 When I go to game over page
 Then I should be on the log in page
+
+Scenario: User should see a message if login fails
+Given I am on the home page
+When I put a wrong password
+Then I should see "Login failed"
+And I should be on the log in page

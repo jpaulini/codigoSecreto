@@ -14,6 +14,8 @@ class SessionsController < ApplicationController
       else
         redirect_to game_new_url
       end
+    else
+    	redirect_to login_url, notice: 'Login failed' 
     end
   end
 

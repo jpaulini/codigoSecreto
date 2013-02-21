@@ -1,8 +1,8 @@
 Then /^I should see the code table$/ do
   if page.respond_to? :should
-    page.should have_xpath('//table',:id => "code-table")
+    page.should have_xpath('//table',:text => "code-table")
   else
-    assert page.has_xpath?('//table',:id => "code-table")
+    assert page.has_xpath?('//table',:text => "code-table")
   end
 end
 

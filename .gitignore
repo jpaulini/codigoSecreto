@@ -10,3 +10,4 @@ tmp/
 .sass-cache/
 coverage/
 coverage/.resultset.json
+.DS_Store

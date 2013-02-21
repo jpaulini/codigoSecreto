@@ -20,6 +20,6 @@ When the following guesses were issued
      | A       |  B      |  C      |  D      |
      | A       |  B      |  C      |  D      |
 Then I should be on game over page
-And I should see "Mala suerte!"
+And I should see /Mala suerte!/
 
 
